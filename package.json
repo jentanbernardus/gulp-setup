@@ -1,0 +1,30 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "description": "bower-to-npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "gulp-watch": "^5.0.1",
+    "jquery-validation": "^1.19.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^6.1.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.4.1",
+    "webpack": "^4.30.0",
+    "webpack-stream": "^5.2.1"
+  }
+}

@@ -1,0 +1,9 @@
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+
+.intro {
+	background: #369;
+	padding: 60px 0;
+		h1, p {
+			color: #fff;
+		}
+}

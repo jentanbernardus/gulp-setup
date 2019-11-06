@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/jentanbernardus/gulp-setup.svg?branch=master)](https://travis-ci.org/jentanbernardus/gulp-setup)

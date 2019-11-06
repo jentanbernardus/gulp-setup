@@ -3,7 +3,8 @@ const   { src, dest, series, parallel } = require('gulp'),
         uglify = require('gulp-uglify'),
         rename = require('gulp-rename'),
         concat = require('gulp-concat'),
-        imagemin = require('gulp-imagemin');
+        imagemin = require('gulp-imagemin'),
+        imageDataURI = require('gulp-image-data-uri'),
         sass = require('gulp-sass'),
         minifyCSS = require('gulp-minify-css'),
         watch = require('gulp-watch'),
@@ -25,6 +26,7 @@ var jsSrc = 'src/js/*.js',
 function css () {
   return src(sassSrc)	// find all .scss files in sass directory
     .pipe(sass())	// run sass
+    // .pipe(concat(cssDist))
     .pipe(minifyCSS())	// minify CSS
     .pipe(rename({ extname: '.min.css' }))
     .pipe(dest(cssDist))	// create css file in directory dist/css
@@ -38,7 +40,7 @@ function js() {
   .pipe(concat('scripts.js'))
     .pipe(uglify())
     .pipe(rename({ extname: '.min.js' }))
-    .pipe(dest(jsDist));
+    .pipe(dest(jsDist))
 }
 exports.js = js;
 
@@ -60,10 +62,25 @@ exports.img = function () {
         .pipe(dest(imgDist))
 }
 
+// convert images to data uri
+// https://github.com/adam-lynch/gulp-image-data-uri
+exports.datauri = function () {
+    return src (imgSrc)
+    .pipe(imageDataURI())
+    // combine css into one file
+    .pipe(concat('data-uri.css')) 
+    .pipe(dest(cssDist));
+}
+/*
+function datauri () {
+    return src (imgSrc)
+    .pipe(imageDataURI())
+    .pipe(dest(cssDist));
+}
+exports.datauri = datauri;
+*/
 
-// --------------------------------------------------------------
-//  HTML
-// --------------------------------------------------------------
+// minify html
 exports.html = function()  {
     return src('index.htm')
     .pipe(htmlmin({
@@ -74,18 +91,18 @@ exports.html = function()  {
     .pipe(rename({ extname: '.html' }))
     .pipe(dest('dist'));
 }
-// --------------------------------------------------------------
-//  WATCH
-// --------------------------------------------------------------
+
+// watch files
 exports.watch = function (){
     watch(
         [cssSrc, jsSrc, sassSrc],
         parallel(css, js)
     );
 }
-// --------------------------------------------------------------
-//  BROWSERSYNC
-// --------------------------------------------------------------
+
+// browsersync
+
+// 
 
 
 

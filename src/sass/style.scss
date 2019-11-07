@@ -1,9 +1,40 @@
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
+// $primary: #385;
+$primary: purple;
 
+
+/*
+@function set-button-text-color($color) {  
+    @if (lightness( $color ) > 40) {
+      @return black;
+    }
+    @else {
+      @return white;
+    }
+}
+*/
+body {
+	-webkit-moz-font-smoothing: antialiased;
+	-moz-moz-font-smoothing: antialiased;
+	-ms-moz-font-smoothing: antialiased;
+	-o-moz-font-smoothing: antialiased;
+	moz-font-smoothing: antialiased;
+	color: #666;
+}
 .intro {
-	background: #369;
+	background: $primary;
 	padding: 60px 0;
 		h1, p {
 			color: #fff;
 		}
+		.lead {
+			color: lighten($primary, 50%);
+		}
+}
+main {
+	h2 {
+		font-size: 1.35rem;
+		font-weight: 600;
+		color: lighten($primary, 10%);
+	}
 }

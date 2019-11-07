@@ -7,6 +7,7 @@ const   { src, dest, series, parallel } = require('gulp'),
         imageDataURI = require('gulp-image-data-uri'),
         sass = require('gulp-sass'),
         minifyCSS = require('gulp-minify-css'),
+        purify = require('gulp-purifycss'),
         watch = require('gulp-watch'),
         browserSync = require('browser-sync').create();
 
@@ -18,8 +19,9 @@ var jsSrc = 'src/js/*.js',
     cssSrc = 'src/css/*.css',
     cssDist = 'dist/css/',
     sassSrc = 'src/sass/*.scss',
-    imgSrc = 'src/img/*'
-    imgDist = 'dist/img/'
+    imgSrc = 'src/img/*',
+    imgDist = 'dist/img/',
+    htmlSrc = './*.html'
 // --------------------------------------------------------------
 //  SASS
 // --------------------------------------------------------------
@@ -27,8 +29,11 @@ function css () {
   return src(sassSrc)	// find all .scss files in sass directory
     //.pipe(sass())	// run sass
     .pipe(sass().on('error',sass.logError))
+    .pipe(purify([jsDist, htmlSrc]))
     // .pipe(concat(cssDist))
-    .pipe(minifyCSS())	// minify CSS
+    .pipe(minifyCSS({ // minify CSS
+        keepSpecialComments: 0
+    }))	
     .pipe(rename({ extname: '.min.css' }))
     .pipe(dest(cssDist))	// create css file in directory dist/css
     .pipe(browserSync.stream())

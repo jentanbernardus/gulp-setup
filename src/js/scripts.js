@@ -1,4 +1,3 @@
-
 $("#contact-form").validate({
   submitHandler: function(form) {
     $.ajax({

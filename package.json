@@ -28,6 +28,7 @@
     "gulp-uglify": "^3.0.2",
     "jquery": "^3.4.1",
     "lodash.template": "^4.5.0",
+    "mem": "^5.1.1",
     "webpack": "^4.30.0",
     "webpack-stream": "^5.2.1"
   }

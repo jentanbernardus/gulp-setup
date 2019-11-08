@@ -11,9 +11,6 @@ const   { src, dest, series, parallel } = require('gulp'),
         watch = require('gulp-watch'),
         browserSync = require('browser-sync').create();
 
-// --------------------------------------------------------------
-//  PATH VARIABLES
-// --------------------------------------------------------------
 var jsSrc = 'src/js/*.js',
     jsDist = 'dist/js/',
     cssSrc = 'src/css/*.css',
@@ -22,9 +19,8 @@ var jsSrc = 'src/js/*.js',
     imgSrc = 'src/img/*',
     imgDist = 'dist/img/',
     htmlSrc = './*.html'
-// --------------------------------------------------------------
-//  SASS
-// --------------------------------------------------------------
+
+// sass to css
 function css () {
   return src(sassSrc)	// find all .scss files in sass directory
     //.pipe(sass())	// run sass
@@ -40,9 +36,7 @@ function css () {
 }
 exports.css = css;
 
-// --------------------------------------------------------------
-//  JAVASCRIPT
-// --------------------------------------------------------------
+// concat + minify scripts
 function js() {
   return src(jsSrc)
   .pipe(concat('scripts.js'))
@@ -53,9 +47,7 @@ function js() {
 exports.js = js;
 
 
-// --------------------------------------------------------------
-//  IMAGES
-// --------------------------------------------------------------
+// compress images
 function img () {
     return src(imgSrc)
         .pipe(imagemin())
@@ -69,6 +61,7 @@ function img () {
         */
         .pipe(dest(imgDist))
 }
+exports.img = img;
 
 // convert images to data uri
 // https://github.com/adam-lynch/gulp-image-data-uri
@@ -79,14 +72,6 @@ exports.datauri = function () {
     .pipe(concat('data-uri.css')) 
     .pipe(dest(cssDist));
 }
-/*
-function datauri () {
-    return src (imgSrc)
-    .pipe(imageDataURI())
-    .pipe(dest(cssDist));
-}
-exports.datauri = datauri;
-*/
 
 // minify html
 function html()  {
@@ -97,19 +82,9 @@ function html()  {
     	removeComments: true
     }))
     .pipe(rename({ extname: '.html' }))
-    .pipe(dest('dist'));
+    .pipe(dest('./dist'));
 }
 exports.html = html
-
-// watch files
-/*
-exports.watch = function (){
-    watch(
-        [cssSrc, jsSrc, sassSrc],
-        parallel(css, js)
-    );
-}
-*/
 
 // browsersync + watch
 function sync() {
@@ -117,6 +92,7 @@ function sync() {
         server: {
            baseDir: "./dist",
            index: "/index.html"
+           // index: "/index.dist.html"
         }
     });
     // watch(sassSrc).on('change',browserSync.reload);
@@ -129,5 +105,5 @@ function sync() {
 }
 exports.sync = sync;
 
-exports.img = img;
+
 exports.default = series(html, css, js, img, sync);

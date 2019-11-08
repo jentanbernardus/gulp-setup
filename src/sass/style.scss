@@ -1,6 +1,7 @@
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
-// $primary: #385;
-$primary: purple;
+$primary: #385;
+// $primary: purple;
+$grey: #666;
 
 
 /*
@@ -14,11 +15,7 @@ $primary: purple;
 }
 */
 body {
-	-webkit-moz-font-smoothing: antialiased;
-	-moz-moz-font-smoothing: antialiased;
-	-ms-moz-font-smoothing: antialiased;
-	-o-moz-font-smoothing: antialiased;
-	moz-font-smoothing: antialiased;
+	
 	color: #666;
 }
 .intro {
@@ -32,9 +29,17 @@ body {
 		}
 }
 main {
-	h2 {
-		font-size: 1.35rem;
-		font-weight: 600;
-		color: lighten($primary, 10%);
-	}
+	padding-bottom: 40px;
+
+		h2 {
+			font-size: 1.35rem;
+			font-weight: 600;
+			color: lighten($primary, 10%);
+		}
+}
+
+footer {
+	padding: 40px 0 20px 0;
+	background: lighten($grey, 50%);
+	color: lighten($grey, 25%);
 }

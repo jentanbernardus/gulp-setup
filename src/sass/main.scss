@@ -1,0 +1,15 @@
+@charset 'utf-8';
+
+@import
+	'node_modules/bootstrap/scss/bootstrap';
+
+@import 
+	'abstracts/variables',
+	'abstracts/functions';
+
+@import
+	'base/global';
+
+@import
+	'layout/footer';
+

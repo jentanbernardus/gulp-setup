@@ -1,0 +1,21 @@
+body {	
+	color: $grey;
+}
+.intro {
+	background: $primary;
+	padding: 60px 0;
+		h1, p {
+			color: #fff;
+		}
+		.lead {
+			color: lighten($primary, 50%);
+		}
+}
+main {
+	padding-bottom: 40px;
+		h2 {
+			font-size: 1.35rem;
+			font-weight: 600;
+			color: lighten($primary, 10%);
+		}
+}

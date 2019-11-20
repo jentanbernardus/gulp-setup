@@ -1,0 +1,21 @@
+// paths
+$PATH_IMG: "../img";
+$PATH_FONT: "../fonts";
+
+// colors
+$primary: #358;
+$grey: #666;
+
+/* EXAMPLE
+background-image: url(#{$PATH_IMG}/wave.png);
+  
+@font-face {
+  font-family: "Geometria-ExtraBold";
+  src: url("#{$PATH_FONT}/Geometria-ExtraBold.eot");
+  src: local("☺"), url("#{$PATH_FONT}/Geometria-ExtraBold.woff") format("woff"),
+    url("#{$PATH_FONT}/Geometria-ExtraBold.ttf") format("truetype"),
+    url("#{$PATH_FONT}/Geometria-ExtraBold.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+*/

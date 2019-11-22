@@ -4,7 +4,7 @@
   "description": "gulp + sass boilerplate",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
   "bugs": {
     "url": "https://github.com/jentanbernardus/gulp-setup/issues"
   },
+  "homepage": "https://github.com/jentanbernardus/gulp-setup/",
   "dependencies": {
     "bootstrap": "^4.0.0",
     "gulp-watch": "^5.0.1",

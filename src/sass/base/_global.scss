@@ -1,11 +1,22 @@
 body {	
 	color: $grey;
+	font-family: 'Inter';
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .intro {
 	background: $primary;
 	padding: 60px 0;
-		h1, p {
+
+		h1 {
+			font-size: 3em;
+			font-weight: 600;
 			color: #fff;
+		}
+
+		p {
+			color: #fff;
+
 		}
 		.lead {
 			color: lighten($primary, 50%);
@@ -13,9 +24,31 @@ body {
 }
 main {
 	padding-bottom: 40px;
-		h2 {
-			font-size: 1.35rem;
-			font-weight: 600;
-			color: lighten($primary, 10%);
+		// h2 {
+		// 	font-size: 1.35rem;
+		// 	font-weight: 600;
+		// 	color: lighten($primary, 10%);
+		// }
+		p {
+			font-size: 0.9em;
 		}
+}
+
+h2 {
+	font-size: 1.35rem;
+	line-height: normal;
+	font-weight: 600;
+	background: $primary; // fallback for old browsers
+	background: linear-gradient(
+		-315deg,
+		// to right,
+		lighten($primary, 30%) 0,
+		darken($primary, 30%) 75%,
+		// #cb4335 0,
+		// #10093b 75%
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	// -webkit-text-fill-color: transparent;
+	-webkit-text-fill-color: rgba(0,0,0,.15);
 }

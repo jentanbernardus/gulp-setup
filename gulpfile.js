@@ -10,7 +10,6 @@ const   { src, dest, series, parallel } = require('gulp'),
         purify = require('gulp-purifycss'),
         watch = require('gulp-watch'),
         browserSync = require('browser-sync').create();
-        
 
 var paths = {
     css: {

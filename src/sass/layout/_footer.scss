@@ -1,5 +1,12 @@
 footer {
 	padding: 40px 0 20px 0;
-	background: lighten($grey, 50%);
-	color: lighten($grey, 25%);
+	// background: lighten($grey, 50%);
+	// background: lighten($primary, 30%);
+	background: $primary;
+	// color: darken($primary, 10%);
+	color: lighten($primary, 50%);
+
+		p {
+			font-size: 0.9em;
+		}
 }

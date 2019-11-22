@@ -1,21 +1,13 @@
-$("#contact-form").validate({
-  submitHandler: function(form) {
-    $.ajax({
-      url: "//formspree.io/myemail@gmail.com", 
-      method: "POST",
-      data: {
-        name: $(form).find("input[name='name']").val(),
-        _replyto: $(form).find("input[name='_replyto']").val(),
-        message: $(form).find("textarea[name='message']").val()
-      },
-      dataType: "json",
-      success: function() {
-        $("#submit-success").fadeIn();
-        $("#contact-form").fadeOut();
-      },
-      error: function() {
-        $("#submit-errors").fadeIn();        
-      }
-    });
+//JQuery Module Pattern
+
+// An object literal
+var app = {
+  init: function() {
+    app.functionOne();
+  },
+  functionOne: function () {
   }
+};
+$("document").ready(function () {
+  app.init();
 });

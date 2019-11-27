@@ -1,4 +1,7 @@
-const   { src, dest, series, parallel } = require('gulp'),
+'use strict';
+
+// const 	{ src, dest, watch, series, parallel, lastRun } = require('gulp'),
+const 	{ gulp, src, dest, series, parallel} = require('gulp'),
         htmlmin = require('gulp-htmlmin'),
         uglify = require('gulp-uglify'),
         rename = require('gulp-rename'),
@@ -11,8 +14,12 @@ const   { src, dest, series, parallel } = require('gulp'),
         watch = require('gulp-watch'),
         browserSync = require('browser-sync').create();
         
-
+// paths
 var paths = {
+		html: {
+        src: './*.html',
+        dist: 'dist/'
+    },
     css: {
         src: "src/sass/**/*.scss",
         dist: "dist/css/"
@@ -21,27 +28,32 @@ var paths = {
         src:'src/js/*.js',
         dist: 'dist/js/'
     },
-    html: {
-        src: './*.html',
-        dist: 'dist/'
-    },
     img: {
         src: 'src/img/*',
         dist: 'dist/img/'
     }
 };
 
-// sass to css
+// private task example
+/*function taskName () {
+  // do stuff here
+}*/
+
+// public task example
+/*exports.taskName = function () {
+  // do stuff here
+}*/
+
+// compile sass to css
 function css () {
-  return src(paths.css.src) // find all .scss files in sass directory
+  return src(paths.css.src)
     .pipe(sass().on('error',sass.logError))
     .pipe(purify([paths.js.dist, paths.html.src]))
-    // .pipe(concat(paths.css.dist))
-    .pipe(minifyCSS({ // minify CSS
+    .pipe(minifyCSS({
         keepSpecialComments: 0
-    })) 
+    }))
     .pipe(rename({ extname: '.min.css' }))
-    .pipe(dest(paths.css.dist)) // create css file in directory dist/css
+    .pipe(dest(paths.css.dist))
     .pipe(browserSync.stream())
 }
 exports.css = css;
@@ -49,7 +61,7 @@ exports.css = css;
 // concat + minify scripts
 function js() {
   return src(paths.js.src)
-  .pipe(concat('scripts.js'))
+  	.pipe(concat('scripts.js'))
     .pipe(uglify())
     .pipe(rename({ extname: '.min.js' }))
     .pipe(dest(paths.js.dist))
@@ -57,19 +69,26 @@ function js() {
 }
 exports.js = js;
 
-
 // compress images
 function img () {
     return src(paths.img.src)
-        .pipe(imagemin())
-        // With options
-        /*
+    	// No options
+    	// .pipe(imagemin())
+    	
+    	// With options
         .pipe(imagemin([
-            imagemin.gifsicle({interlaced: true}),
-            imagemin.jpegtran({progressive: true}),
-            imagemin.optipng({optimizationLevel: 5}),
-        ]))
-        */
+        		imagemin.gifsicle({interlaced: true}),
+        		imagemin.jpegtran({progressive: true}),
+        		imagemin.optipng({optimizationLevel: 5}),
+            imagemin.svgo({
+			        plugins: [
+			            {removeViewBox: true},
+			            {cleanupIDs: false}
+			        ]
+			    })
+        	], {
+					    verbose: true
+					}))
         .pipe(dest(paths.img.dist))
 }
 exports.img = img;
@@ -85,9 +104,9 @@ exports.datauri = function () {
 
 // minify html
 function html()  {
-    return src('index.html')
-    .pipe(htmlmin({
-      collapseWhitespace: true,
+	return src('index.html')
+  	.pipe(htmlmin({
+   		collapseWhitespace: true,
       collapseInlineTagWhitespace: true,
       removeComments: true
     }))
@@ -98,37 +117,27 @@ exports.html = html
 
 // browsersync + watch
 function sync() {
-    browserSync.init({
-        server: {
-           baseDir: "./dist",
-           index: "/index.html"
-        }
-    });
-    watch('./*.html').on('change',browserSync.reload);
-    watch(paths.js.src, paths.css.src).on('change', browserSync.reload);
-    watch(
-        [paths.html.src, paths.js.src, paths.css.src],
-        parallel(html, css, js),
-    );
+	browserSync.init({
+		server: {
+    	baseDir: "./dist",
+      index: "/index.html"
+    }
+  });
+  // You can use a single task
+  // watch('src/*.css', css);
+  
+  // Or a composed task
+  watch([paths.html.src, paths.js.src, paths.css.src],
+  	parallel(html, css, js)
+  ).on('change', browserSync.reload);
 }
 exports.sync = sync;
 
-/*
-exports.watchTask = function watchTask () {
-  browserSync.init({
-    server: {
-       baseDir: "./dist",
-       index: "/index.html"
-    }
-  });
-  watch([paths.html.src, paths.css.src, paths.js.src],
-    parallel(html, css, js)
-    ).on('change', browserSync.reload);
-}
-*/
 
-exports.dev = series(html, css, sync);
+// exports
+exports.dev = series(html, css, js, sync);
 exports.default = series(
-  parallel(html, css, js,),
+	html,
+  parallel(css, js),
   img, sync
 );

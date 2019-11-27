@@ -13,10 +13,8 @@ body {
 			font-weight: 600;
 			color: #fff;
 		}
-
 		p {
 			color: #fff;
-
 		}
 		.lead {
 			color: lighten($primary, 50%);
@@ -24,11 +22,7 @@ body {
 }
 main {
 	padding-bottom: 40px;
-		// h2 {
-		// 	font-size: 1.35rem;
-		// 	font-weight: 600;
-		// 	color: lighten($primary, 10%);
-		// }
+
 		p {
 			font-size: 0.9em;
 		}

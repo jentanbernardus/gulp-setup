@@ -34,17 +34,7 @@ var paths = {
   }
 };
 
-// private task example
-/*function taskName () {
-  // do stuff here
-}*/
-
-// public task example
-/*exports.taskName = function () {
-  // do stuff here
-}*/
-
-// compile sass to css
+// compile sass to css, clean + minify
 function css() {
   return src(paths.css.src)
     .pipe(sass()
@@ -98,7 +88,6 @@ exports.img = img;
 exports.datauri = function() {
   return src(paths.img.src)
     .pipe(imageDataURI())
-    // combine css into one file
     .pipe(concat('data-uri.css'))
     .pipe(dest(paths.css.dist));
 }
@@ -124,10 +113,10 @@ function sync() {
       index: "/index.html"
     }
   });
-  // You can use a single task
-  // watch('src/*.css', css);
+  // single task
+  // watch('paths.css.src', css);
 
-  // Or a composed task
+  // composed task
   watch([paths.html.src, paths.js.src, paths.css.src],
       parallel(html, css, js)
     )

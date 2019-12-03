@@ -16,6 +16,8 @@
 -  gulp-watch
 -  browser-sync
 
+---
+
 ## Gulp Tasks
 
 1.  `gulp css`: compile sass to css + minify
@@ -23,5 +25,21 @@
 3.  `gulp img`: compress images
 4.  `gulp html`: minify html
 5.  `gulp sync`: browsersync + watch
+
+---
+
+__Private task example__
+```
+function taskName () {
+  // do stuff here
+}
+```
+
+__Public task example__
+```
+exports.taskName = function () {
+  // do stuff here
+}
+```
 
 _Work in progress..._

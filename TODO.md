@@ -18,3 +18,10 @@
 	    done();
 	}
 ``
+[] Split gulp tasks across multiple files
+	- https://github.com/gulpjs/gulp/blob/master/docs/recipes/split-tasks-across-multiple-files.md
+	- http://macr.ae/article/splitting-gulpfile-multiple-files.html
+	- http://man.hubwiz.com/docset/Gulp.docset/Contents/Resources/Documents/recipes/split-tasks-across-multiple-files.html
+	- https://gist.github.com/heldr/a3429c31ff45937c13de
+	- https://gist.github.com/thomastuts/a4dafc20d49662e4e13a
+	- 

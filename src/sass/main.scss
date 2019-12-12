@@ -1,9 +1,25 @@
 @charset 'utf-8';
 
+// fonts
 @import url('https://rsms.me/inter/inter.css');
 
-@import
-	'node_modules/bootstrap/scss/bootstrap';
+// @import 'node_modules/bootstrap/scss/bootstrap';
+
+// Required
+@import 
+	"node_modules/bootstrap/scss/functions",
+	"node_modules/bootstrap/scss/variables",
+	"node_modules/bootstrap/scss/mixins";
+
+// Optional
+@import 
+	"node_modules/bootstrap/scss/reboot",
+	"node_modules/bootstrap/scss/type",
+	"node_modules/bootstrap/scss/utilities",
+	// "node_modules/bootstrap/scss/images",
+	// "node_modules/bootstrap/scss/code",
+	"node_modules/bootstrap/scss/grid";
+
 
 @import 
 	'abstracts/variables',

@@ -10,7 +10,7 @@ body {
 
 		h1 {
 			font-size: 3em;
-			font-weight: 900;
+			font-weight: 600;
 			color: #fff;
 		}
 		p {
@@ -43,6 +43,5 @@ h2 {
 	);
 	background-clip: text;
 	-webkit-background-clip: text;
-	// -webkit-text-fill-color: transparent;
 	-webkit-text-fill-color: rgba(0,0,0,.15);
 }

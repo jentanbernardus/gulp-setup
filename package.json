@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/jentanbernardus/gulp-setup/",
   "dependencies": {
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^4.6.0",
     "popper.js": "^1.16.0"
   },
   "devDependencies": {
